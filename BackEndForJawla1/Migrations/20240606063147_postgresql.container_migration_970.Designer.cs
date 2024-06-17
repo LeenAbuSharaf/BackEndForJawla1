@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BackEndForJawla1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BackEndForJawla1.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240606063147_postgresql.container_migration_970")]
+    partial class postgresqlcontainer_migration_970
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,7 @@ namespace BackEndForJawla1.Migrations
 
                     b.HasKey("routeID");
 
-                    b.ToTable("busRouteStop", "busNetwork");
+                    b.ToTable("user", "user");
                 });
 
             modelBuilder.Entity("BackEndForJawla1.Models.routes", b =>
@@ -73,30 +76,6 @@ namespace BackEndForJawla1.Migrations
                     b.HasKey("routeID");
 
                     b.ToTable("routes", "busNetwork");
-                });
-
-            modelBuilder.Entity("BackEndForJawla1.Models.stopsgeojson", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("StopID")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("StopName")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("geom")
-                        .IsRequired()
-                        .HasColumnType("geometry(Point, 4326)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("stopsgeojson", "busNetwork");
                 });
 
             modelBuilder.Entity("BackEndForJawla1.Models.user", b =>
@@ -117,7 +96,7 @@ namespace BackEndForJawla1.Migrations
 
                     b.HasKey("userId");
 
-                    b.ToTable("user", "user");
+                    b.ToTable("user", "busNetwork");
                 });
 #pragma warning restore 612, 618
         }

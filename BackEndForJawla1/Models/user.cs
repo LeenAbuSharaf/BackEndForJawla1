@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace BackEndForJawla1.Models
 {
     public class user
     {
         [Key]
-        public int userId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int userID { get; set; }
 
       
         [Required(ErrorMessage = "Phone number is required")]
