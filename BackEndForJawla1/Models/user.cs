@@ -10,7 +10,7 @@ namespace BackEndForJawla1.Models
 
       
         [Required(ErrorMessage = "Phone number is required")]
-        [RegularExpression(@"00962(78|77|79)\d{7}", ErrorMessage = "Invalid phone number")]
+        [RegularExpression(@"0(78|77|79)\d{7}", ErrorMessage = "Invalid phone number")]
         public string phoneNumber { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
